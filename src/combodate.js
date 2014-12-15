@@ -151,12 +151,27 @@
                 if (moment.localeData) {
                     relTime = moment.localeData()._relativeTime;
                 } else {
-                    relTime = moment.relativeTime || moment.langData()._relativeTime;
+                    relTime = moment.relativeTime || moment.localeData()._relativeTime;
                 }
                 var header = typeof relTime[key] === 'function' ? relTime[key](1, true, key, false) : relTime[key];
                 //take last entry (see momentjs lang files structure)
                 header = header.split(' ').reverse()[0];
-                values.push(['', header]);
+                
+                switch (header){
+                    case 'day':
+                        values.push(['', 'DD']);
+                        break;
+                    case 'month':
+                        values.push(['', 'MM']);
+                        break;
+                    case 'year':
+                        values.push(['', 'YYYY']);
+                        break;
+                    default:
+                        values.push(['', header]);
+                        break;
+                }
+                
             } else if(this.options.firstItem === 'empty') {
                 values.push(['', '']);
             }
