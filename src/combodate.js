@@ -165,7 +165,7 @@
                         values.push(['', 'MM']);
                         break;
                     case 'year':
-                        values.push(['', 'YYYY']);
+                        values.push(['', 'AAAA']);
                         break;
                     default:
                         values.push(['', header]);
